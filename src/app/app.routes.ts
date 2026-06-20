@@ -1,7 +1,14 @@
 import { Routes } from '@angular/router';
 
 export const routes: Routes = [
-	{ path: '', pathMatch: 'full', redirectTo: 'checkout' },
+	{ path: '', pathMatch: 'full', redirectTo: 'login' },
+	{
+		path: 'login',
+		loadComponent: () =>
+			import('./core/auth/pages/login-page.component').then(
+				(m) => m.LoginPageComponent,
+			),
+	},
 	{
 		path: 'checkout',
 		loadComponent: () =>
@@ -37,5 +44,5 @@ export const routes: Routes = [
 				(m) => m.RefundsPageComponent,
 			),
 	},
-	{ path: '**', redirectTo: 'checkout' },
+	{ path: '**', redirectTo: 'login' },
 ];
